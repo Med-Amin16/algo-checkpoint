@@ -1,0 +1,33 @@
+ALGORITHM function main
+VAR
+    set_declarationsvar sentence = "";
+    var end_of_sentence = false;
+    var num_chars = 0;
+    var num_words = 0;
+    var num_vowels = 0;
+    var vowels = "aeiouAEIOU";
+BEGIN
+   while (!end_of_sentence) {
+        var char = gmc_input("Enter a character: ");
+        if (char == ".") {
+            end_of_sentence = true;
+        } else {
+            sentence += char;
+            num_chars += 1;
+            if (char == " ") {
+                num_words += 1;
+            } else if (vowels.includes(char)) {
+                num_vowels += 1;
+            }
+        }
+    }
+
+    // We need to increment the number of words by 1 since the last word
+    // won't have a space after it
+    num_words += 1;
+
+    gmc_output("The sentence is: " + sentence);
+    gmc_output("The length of the sentence is: " + num_chars);
+    gmc_output("The number of words in the sentence is: " + num_words);
+    gmc_output("The number of vowels in the sentence is: " + num_vowels);
+END
